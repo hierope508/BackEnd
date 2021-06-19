@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[tbAluno]
+(
+	[RA] INT NOT NULL
+	,[CPF] NVARCHAR(11) NOT NULL, 
+
+    CONSTRAINT [FK_tbAluno_tbUsuario] FOREIGN KEY ([CPF]) REFERENCES [tbUsuario]([CPF]),
+	CONSTRAINT [PK_tbAluno_CPF] PRIMARY KEY ([CPF]),
+	CONSTRAINT [UK_tbAluno_RA] UNIQUE ([RA])
+)
