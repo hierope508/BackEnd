@@ -1,0 +1,17 @@
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\RestWithMongo.BLL.deps.json
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\RestWithMongo.BLL.dll
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\ref\RestWithMongo.BLL.dll
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\RestWithMongo.BLL.pdb
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\RestWithMongo.DAL.dll
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\RestWithMongo.Model.dll
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\RestWithMongo.DAL.pdb
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\bin\Debug\net5.0\RestWithMongo.Model.pdb
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\BLL.csprojAssemblyReference.cache
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\BLL.AssemblyInfoInputs.cache
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\BLL.AssemblyInfo.cs
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\BLL.csproj.CoreCompileInputs.cache
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\BLL.csproj.CopyComplete
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\RestWithMongo.BLL.dll
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\ref\RestWithMongo.BLL.dll
+C:\Users\IRANN\Documents\Git\BackEnd\RestAPIWithMongo\BLL\obj\Debug\net5.0\RestWithMongo.BLL.pdb
