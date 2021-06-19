@@ -1,0 +1,11 @@
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\bin\Release\net5.0\RestWithMongo.Model.deps.json
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\bin\Release\net5.0\RestWithMongo.Model.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\bin\Release\net5.0\ref\RestWithMongo.Model.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\bin\Release\net5.0\RestWithMongo.Model.pdb
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\obj\Release\net5.0\Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\obj\Release\net5.0\Model.AssemblyInfoInputs.cache
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\obj\Release\net5.0\Model.AssemblyInfo.cs
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\obj\Release\net5.0\Model.csproj.CoreCompileInputs.cache
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\obj\Release\net5.0\RestWithMongo.Model.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\obj\Release\net5.0\ref\RestWithMongo.Model.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\Model\obj\Release\net5.0\RestWithMongo.Model.pdb

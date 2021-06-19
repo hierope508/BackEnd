@@ -1,4 +1,5 @@
-﻿using RestWithMongo.DAL;
+﻿using LogHelper;
+using RestWithMongo.DAL;
 using RestWithMongo.Model;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace RestWithMongo.BLL
             }
             catch (Exception ex)
             {
+                LogHelper.LogHelper.LogException(ex);
                 throw new System.Web.Http.HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     Content = new StringContent(ex.InnerException.Message),
@@ -51,6 +53,7 @@ namespace RestWithMongo.BLL
             }
             catch (Exception ex)
             {
+                LogHelper.LogHelper.LogException(ex);
                 throw new System.Web.Http.HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     Content = new StringContent(ex.InnerException.Message),
@@ -73,6 +76,7 @@ namespace RestWithMongo.BLL
             }
             catch (Exception ex)
             {
+                LogHelper.LogHelper.LogException(ex);
                 throw new System.Web.Http.HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     Content = new StringContent(ex.InnerException.Message),

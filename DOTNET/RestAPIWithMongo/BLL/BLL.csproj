@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\LogHelper\LogHelper.csproj" />
   </ItemGroup>
 
 </Project>

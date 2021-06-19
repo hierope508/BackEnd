@@ -455,11 +455,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\Model\\Model.csproj",
       "projectName": "RestWithMongo.Model",
-      "projectPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\Model\\Model.csproj",
+      "projectPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\IRANN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\Model\\obj\\",
+      "outputPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

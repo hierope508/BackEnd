@@ -1,0 +1,11 @@
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\bin\Debug\net5.0\LogHelper.deps.json
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\bin\Debug\net5.0\LogHelper.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\bin\Debug\net5.0\ref\LogHelper.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\bin\Debug\net5.0\LogHelper.pdb
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\obj\Debug\net5.0\LogHelper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\obj\Debug\net5.0\LogHelper.AssemblyInfoInputs.cache
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\obj\Debug\net5.0\LogHelper.AssemblyInfo.cs
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\obj\Debug\net5.0\LogHelper.csproj.CoreCompileInputs.cache
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\obj\Debug\net5.0\LogHelper.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\obj\Debug\net5.0\ref\LogHelper.dll
+C:\Users\IRANN\Documents\Git\BackEnd\DOTNET\RestAPIWithMongo\LogHelper\obj\Debug\net5.0\LogHelper.pdb

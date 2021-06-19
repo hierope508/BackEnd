@@ -41,6 +41,8 @@ namespace RestWithMongo
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestWithMongo", Version = "v1" });
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
+
+            LogHelper.LogHelper.SetLogPath(@"C:\Users\IRANN\OneDrive\Ambiente de Trabalho\Log");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

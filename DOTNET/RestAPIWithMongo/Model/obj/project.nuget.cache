@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SlFFzsn2RdxsSOsBLKK24L3pXRaiyoKB5jre3hbJ3bx6v2Lc7/CSwRe2tNM3TIoI6ihR0CCdnBfl5q4fdt8P4A==",
+  "dgSpecHash": "alM/A9yUxcYIgn2y9IIOddhjCobQclveJDdixzF0sSbePySG1wmMjRrcQaKRGpM5LkoLFZvD24lZXVSdb4hqBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\Model\\Model.csproj",
+  "projectFilePath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\Model\\Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IRANN\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\IRANN\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",

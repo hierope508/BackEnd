@@ -1595,6 +1595,16 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "LogHelper/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/LogHelper.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LogHelper.dll": {}
+        }
+      },
       "RestWithMongo.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -5708,6 +5718,11 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "LogHelper/1.0.0": {
+      "type": "project",
+      "path": "../LogHelper/LogHelper.csproj",
+      "msbuildProject": "../LogHelper/LogHelper.csproj"
+    },
     "RestWithMongo.DAL/1.0.0": {
       "type": "project",
       "path": "../DAL/DAL.csproj",
@@ -5721,6 +5736,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "LogHelper >= 1.0.0",
       "Microsoft.AspNet.WebApi.Core >= 5.2.7",
       "RestWithMongo.DAL >= 1.0.0"
     ]
@@ -5732,11 +5748,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\BLL\\BLL.csproj",
+      "projectUniqueName": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\BLL\\BLL.csproj",
       "projectName": "RestWithMongo.BLL",
-      "projectPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\BLL\\BLL.csproj",
+      "projectPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\IRANN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\BLL\\obj\\",
+      "outputPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5757,8 +5773,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\RestAPIWithMongo\\DAL\\DAL.csproj"
+            "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\DAL\\DAL.csproj"
+            },
+            "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\LogHelper\\LogHelper.csproj": {
+              "projectPath": "C:\\Users\\IRANN\\Documents\\Git\\BackEnd\\DOTNET\\RestAPIWithMongo\\LogHelper\\LogHelper.csproj"
             }
           }
         }
