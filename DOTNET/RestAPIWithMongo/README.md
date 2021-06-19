@@ -1,5 +1,5 @@
-# DesafioZeBackEnd
-Desafio Backend Zé Delivery
+# Rest API using MongoDB
+Rest API using MongoDB
 
 
 # Pre requisitos:
@@ -15,11 +15,11 @@ Desafio Backend Zé Delivery
 			2 - use DesafioZeBackEndDB
 			3 - db.createCollection('Partners')
 	
-	2 - Alterar arquivo "DesafioZeBackEnd\DesafioZeBackEnd\appsettings.json" com os parametros CollectionName, ConnectionString e DatabaseName para os configurados na instancia do mongoDB
+	2 - Alterar arquivo "RestAPIWithMongo\RestAPIWithMongo\appsettings.json" com os parametros CollectionName, ConnectionString e DatabaseName para os configurados na instancia do mongoDB
 
 # Como rodar
 	1 - Visual Studio:
-		1 - Abrir arquivo DesafioZeBackEnd.sln
+		1 - Abrir arquivo RestAPIWithMongo.sln
 		2 - Restaurar Pacotes NuGet
 		3 - Executar projeto (F5)
 		4 - Consumir metodos utilizando a pagina do Swagger que é aberta ou utilizando sua ferramenta de preferencia
@@ -28,7 +28,7 @@ Desafio Backend Zé Delivery
 
 	2 - VsCode
 		0 - Instalar extensão NuGet Package Manager
-		1 - Abrir pasta \DesafioZeBackEnd\DesafioZeBackEnd
+		1 - Abrir pasta \RestAPIWithMongo\RestAPIWithMongo
 		2 - Restaurar pacotes Nuget
 		3 - Executar projeto (F5)
 		4 - Consumir API pela ferramenta de preferencia ou utilizando o Swagger no navegador(Ex: https://localhost:5001/swagger/index.html)
