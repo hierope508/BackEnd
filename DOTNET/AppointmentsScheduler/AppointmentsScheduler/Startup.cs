@@ -35,8 +35,10 @@ namespace AppointmentsScheduler
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppointmentsScheduler", Version = "v1" });
             });
 
-            services.AddDbContext<AppointmentsSchedulerContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AppointmentsSchedulerContext")));
+            services.AddSingleton(new BLL.BLLUser(Configuration.GetConnectionString("AppointmentsSchedulerContext")));
+
+            //services.AddDbContext<AppointmentsSchedulerContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("AppointmentsSchedulerContext")));
 
         }
 

@@ -6,7 +6,7 @@ namespace AppointmentsScheduler.Model
 {
     public class User
     {
-        [Key(), JsonIgnore()]
+        [Key()]
         public int Id { get; set; }
 
         public string FullName { get; set; }
