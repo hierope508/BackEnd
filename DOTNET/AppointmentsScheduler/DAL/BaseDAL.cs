@@ -1,46 +1,79 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using AppointmentsScheduler.Model;
 
 namespace AppointmentsScheduler.DAL
 {
-    public class BaseDAL : DbContext
+    public abstract class BaseDAL<T> : BaseContext where T : class 
     {
-        protected BaseDAL(string connectionString) : base(Setup(connectionString))
-        {
-            
-        }
 
-        protected BaseDAL(DbContextOptions<BaseDAL> options)
-            : base(options)
+        public BaseDAL(string connectionString) : base(connectionString)
         {
+
         }
 
         /// <summary>
-        /// Initialize DbContext to use SQL
+        /// Get all <typeparamref name="T"/> objects from DB
         /// </summary>
-        /// <param name="connectionString">The sql server connection string</param>
-        /// <returns></returns>
-        private static DbContextOptions<BaseDAL> Setup(string connectionString)
+        /// <returns>A List of <typeparamref name="T"/></returns>
+        public async Task<List<T>> SelectAll()
         {
-            DbContextOptionsBuilder<BaseDAL> options = new DbContextOptionsBuilder<BaseDAL>();
-            options.UseSqlServer(connectionString);
-            return options.Options;
+            return await Set<T>().ToListAsync();
         }
 
-        protected DbSet<User> User { get; set; }
+        /// <summary>
+        /// Get an <typeparamref name="T"/> filtering by Id
+        /// </summary>
+        /// <param name="id">The id of the <typeparamref name="T"/></param>
+        /// <returns>A <typeparamref name="T"/></returns>
+        public async Task<T> Select(int id)
+        {
+            return await Set<T>().FindAsync(id);
+        }
 
-        protected DbSet<Patient> Patient { get; set; }
+        /// <summary>
+        /// Update a <typeparamref name="T"/>
+        /// </summary>
+        /// <param name="obj"> <typeparamref name="T"/> object to be updated</param>
+        /// <returns><typeparamref name="T"/> object</returns>
+        public void Update(T obj)
+        {
+            base.Entry(typeof(T)).State = EntityState.Modified;
 
-        protected DbSet<Appointment> Appointment { get; set; }
+            SaveChanges();
+        }
 
-        protected DbSet<Country> Country { get; set; }
+        /// <summary>
+        /// Insert a <typeparamref name="T"/> on database
+        /// </summary>
+        /// <param name="obj"><typeparamref name="T"/> to be added</param>
+        /// <returns></returns>
+        public async Task<T> Insert(T obj)
+        {
+            Set<T>().Add(obj);
+            await SaveChangesAsync();
+            return obj;
+        }
 
+        /// <summary>
+        /// Delete a <typeparamref name="T"/> from database
+        /// </summary>
+        /// <param name="obj">Object to be deleted</param>
+        /// <returns></returns>
+        public async Task Delete(T obj)
+        {
+            Set<T>().Remove(obj);
+            await SaveChangesAsync();
+        }
 
-
+        /// <summary>
+        /// Check if a <typeparamref name="T"/> exists in DB
+        /// </summary>
+        /// <param name="id">The id of the obj</param>
+        /// <returns>True if exists, false otherwise</returns>
+        public abstract bool Exists(int id);
     }
 }

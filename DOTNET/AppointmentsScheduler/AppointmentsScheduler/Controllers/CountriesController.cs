@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AppointmentsScheduler.Data;
 using AppointmentsScheduler.Model;
+using AppointmentsScheduler.BLL;
 
 namespace AppointmentsScheduler.Controllers
 {
@@ -14,26 +14,25 @@ namespace AppointmentsScheduler.Controllers
     [ApiController]
     public class CountriesController : ControllerBase
     {
-        private readonly AppointmentsSchedulerContext _context;
+        private readonly BLLCountry _context;
 
-        public CountriesController(AppointmentsSchedulerContext context)
+        public CountriesController(BLLCountry context)
         {
             _context = context;
-            _context.Database.EnsureCreated();
         }
 
         // GET: api/Countries
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Country>>> GetCountry()
         {
-            return await _context.Country.ToListAsync();
+            return await _context.GetAllCountries();
         }
 
         // GET: api/Countries/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Country>> GetCountry(int id)
         {
-            var country = await _context.Country.FindAsync(id);
+            var country = await _context.GetCountry(id);
 
             if (country == null)
             {
@@ -53,11 +52,9 @@ namespace AppointmentsScheduler.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(country).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _context.UpdateCountry(country);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -79,9 +76,8 @@ namespace AppointmentsScheduler.Controllers
         [HttpPost]
         public async Task<ActionResult<Country>> PostCountry(Country country)
         {
-            _context.Country.Add(country);
-            await _context.SaveChangesAsync();
-
+            await _context.InsertCountry(country);
+            
             return CreatedAtAction("GetCountry", new { id = country.Id }, country);
         }
 
@@ -89,21 +85,20 @@ namespace AppointmentsScheduler.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
-            var country = await _context.Country.FindAsync(id);
+            var country = await _context.GetCountry(id);
             if (country == null)
             {
                 return NotFound();
             }
 
-            _context.Country.Remove(country);
-            await _context.SaveChangesAsync();
+            await _context.DeleteCountry(country);;
 
             return NoContent();
         }
 
         private bool CountryExists(int id)
         {
-            return _context.Country.Any(e => e.Id == id);
+            return _context.CountryExists(id);
         }
     }
 }

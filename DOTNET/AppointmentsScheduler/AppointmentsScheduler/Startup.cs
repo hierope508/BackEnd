@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using AppointmentsScheduler.Data;
 
 namespace AppointmentsScheduler
 {
@@ -35,7 +34,12 @@ namespace AppointmentsScheduler
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppointmentsScheduler", Version = "v1" });
             });
 
-            services.AddSingleton(new BLL.BLLUser(Configuration.GetConnectionString("AppointmentsSchedulerContext")));
+            string connectionString = Configuration.GetConnectionString("AppointmentsSchedulerContext");
+
+            services.AddSingleton(new BLL.BLLUser(connectionString));
+            services.AddSingleton(new BLL.BLLCountry(connectionString));
+            services.AddSingleton(new BLL.BLLAppointment(connectionString));
+            services.AddSingleton(new BLL.BLLPatient(connectionString));
 
             //services.AddDbContext<AppointmentsSchedulerContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("AppointmentsSchedulerContext")));

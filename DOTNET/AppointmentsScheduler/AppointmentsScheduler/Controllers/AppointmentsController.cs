@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AppointmentsScheduler.Data;
 using AppointmentsScheduler.Model;
+using AppointmentsScheduler.BLL;
 
 namespace AppointmentsScheduler.Controllers
 {
@@ -14,26 +14,25 @@ namespace AppointmentsScheduler.Controllers
     [ApiController]
     public class AppointmentsController : ControllerBase
     {
-        private readonly AppointmentsSchedulerContext _context;
+        private readonly BLLAppointment _context;
 
-        public AppointmentsController(AppointmentsSchedulerContext context)
+        public AppointmentsController(BLLAppointment context)
         {
             _context = context;
-            _context.Database.EnsureCreated();
         }
 
         // GET: api/Appointments
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointment()
         {
-            return await _context.Appointment.ToListAsync();
+            return await _context.GetAllAppointment();
         }
 
         // GET: api/Appointments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Appointment>> GetAppointment(int id)
         {
-            var appointment = await _context.Appointment.FindAsync(id);
+            var appointment = await _context.GetAppointment(id);
 
             if (appointment == null)
             {
@@ -53,11 +52,9 @@ namespace AppointmentsScheduler.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(appointment).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _context.UpdateAppointment(appointment);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -79,9 +76,8 @@ namespace AppointmentsScheduler.Controllers
         [HttpPost]
         public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
         {
-            _context.Appointment.Add(appointment);
-            await _context.SaveChangesAsync();
-
+            await _context.InsertAppointment(appointment);
+            
             return CreatedAtAction("GetAppointment", new { id = appointment.Id }, appointment);
         }
 
@@ -89,21 +85,19 @@ namespace AppointmentsScheduler.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAppointment(int id)
         {
-            var appointment = await _context.Appointment.FindAsync(id);
+            var appointment = await _context.GetAppointment(id);
             if (appointment == null)
             {
                 return NotFound();
             }
 
-            _context.Appointment.Remove(appointment);
-            await _context.SaveChangesAsync();
-
+            await _context.DeleteAppointment(appointment);
             return NoContent();
         }
 
         private bool AppointmentExists(int id)
         {
-            return _context.Appointment.Any(e => e.Id == id);
+            return _context.AppointmentExists(id);
         }
     }
 }

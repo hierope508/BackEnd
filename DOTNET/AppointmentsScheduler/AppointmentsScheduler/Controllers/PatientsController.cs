@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AppointmentsScheduler.Data;
+using AppointmentsScheduler.BLL;
 using AppointmentsScheduler.Model;
 
 namespace AppointmentsScheduler.Controllers
@@ -14,9 +14,9 @@ namespace AppointmentsScheduler.Controllers
     [ApiController]
     public class PatientsController : ControllerBase
     {
-        private readonly AppointmentsSchedulerContext _context;
+        private readonly BLLPatient _context;
 
-        public PatientsController(AppointmentsSchedulerContext context)
+        public PatientsController(BLLPatient context)
         {
             _context = context;
         }
@@ -25,14 +25,14 @@ namespace AppointmentsScheduler.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatient()
         {
-            return await _context.Patient.ToListAsync();
+            return await _context.GetAllPatients();
         }
 
         // GET: api/Patients/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Patient>> GetPatient(int id)
         {
-            var patient = await _context.Patient.FindAsync(id);
+            var patient = await _context.GetPatient(id);
 
             if (patient == null)
             {
@@ -52,11 +52,9 @@ namespace AppointmentsScheduler.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(patient).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _context.UpdatePatient(patient);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,9 +76,8 @@ namespace AppointmentsScheduler.Controllers
         [HttpPost]
         public async Task<ActionResult<Patient>> PostPatient(Patient patient)
         {
-            _context.Patient.Add(patient);
-            await _context.SaveChangesAsync();
-
+            await _context.InsertPatient(patient);
+            
             return CreatedAtAction("GetPatient", new { id = patient.Id }, patient);
         }
 
@@ -88,21 +85,20 @@ namespace AppointmentsScheduler.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePatient(int id)
         {
-            var patient = await _context.Patient.FindAsync(id);
+            var patient = await _context.GetPatient(id);
             if (patient == null)
             {
                 return NotFound();
             }
 
-            _context.Patient.Remove(patient);
-            await _context.SaveChangesAsync();
-
+            await _context.DeletePatient(patient);
+            
             return NoContent();
         }
 
         private bool PatientExists(int id)
         {
-            return _context.Patient.Any(e => e.Id == id);
+            return _context.PatientExists(id);
         }
     }
 }
