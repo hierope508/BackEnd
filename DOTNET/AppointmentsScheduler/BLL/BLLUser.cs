@@ -29,6 +29,20 @@ namespace AppointmentsScheduler.BLL
             
         }
 
+        public User GetUser(string login)
+        {
+            try
+            {
+                return _dalUser.Select(login);
+            }
+            catch (Exception ex)
+            {
+                //Log;
+                throw;
+            }
+
+        }
+
         public async Task<List<User>> GetAllUsers()
         {
             try
@@ -70,11 +84,15 @@ namespace AppointmentsScheduler.BLL
             
         }
 
-        public async Task InsertUser(User user)
+        public async Task InsertUser(User user, string password)
         {
             try
             {
+                if (String.IsNullOrEmpty(password))
+                    throw new Exception("Password cannot be null");
+
                 user.Id = 0;
+                user.Password = new BLLSecurity().GenerateHashedPassword(password);
                 await _dalUser.Insert(user);
             }
             catch (Exception ex)
@@ -90,6 +108,21 @@ namespace AppointmentsScheduler.BLL
             try
             {
                 await _dalUser.Delete(user);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+
+        public bool Authenticate(string login, string password)
+        {
+            try
+            {
+                User user = GetUser(login);
+                return BLLAuthentication.Authenticate(user, password);
             }
             catch (Exception ex)
             {

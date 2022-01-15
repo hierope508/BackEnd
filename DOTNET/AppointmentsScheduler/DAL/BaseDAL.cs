@@ -53,8 +53,17 @@ namespace AppointmentsScheduler.DAL
         /// <returns></returns>
         public async Task<T> Insert(T obj)
         {
-            Set<T>().Add(obj);
-            await SaveChangesAsync();
+            try
+            {
+                Set<T>().Add(obj);
+                await SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                Entry(obj).State = EntityState.Detached;
+                throw;
+            }
+
             return obj;
         }
 

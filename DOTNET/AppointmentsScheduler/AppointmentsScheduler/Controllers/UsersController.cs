@@ -13,25 +13,25 @@ namespace AppointmentsScheduler
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly BLL.BLLUser _context;
+        private readonly BLL.BLLUser _bllUser;
 
         public UsersController(BLL.BLLUser context)
         {
-            _context = context;
+            _bllUser = context;
         }
 
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            return await _context.GetAllUsers();
+            return await _bllUser.GetAllUsers();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.GetUser(id);
+            var user = await _bllUser.GetUser(id);
 
             if (user == null)
             {
@@ -53,17 +53,18 @@ namespace AppointmentsScheduler
 
             try
             {
-                 _context.UpdateUser(user);
+                 _bllUser.UpdateUser(user);
             }
             catch (Exception ex)
             {
-                if (!_context.UserExists(id))
+                if (!_bllUser.UserExists(id))
                 {
                     return NotFound();
                 }
                 else
                 {
-                    throw;
+                    //Log
+                    return BadRequest();
                 }
             }
 
@@ -73,26 +74,61 @@ namespace AppointmentsScheduler
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser(User user, string password)
         {
-            await _context.InsertUser(user);
+            try
+            {
+                await _bllUser.InsertUser(user, password);
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+                return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _context.GetUser(id);
+            var user = await _bllUser.GetUser(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            await _context.DeleteUser(user);
+            await _bllUser.DeleteUser(user);
 
             return NoContent();
+        }
+
+        /// <summary>
+        /// Authenticate the user
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        [HttpGet("Authenticate")]
+        public ActionResult Authenticate(string email, string password)
+        {
+            try
+            {
+                var validUser = _bllUser.Authenticate(email, password);
+
+                if (!validUser)
+                {
+                    return Unauthorized();
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest();
+            }
         }
     }
 }

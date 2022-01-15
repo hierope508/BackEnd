@@ -12,7 +12,9 @@ namespace AppointmentsScheduler.DAL
     {
         protected BaseContext(string connectionString) : base(Setup(connectionString))
         {
-            
+#if DEBUG
+            this.Database.EnsureCreated();
+#endif
         }
 
         protected BaseContext(DbContextOptions<BaseContext> options)
@@ -32,6 +34,13 @@ namespace AppointmentsScheduler.DAL
             return options.Options;
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+            base.OnModelCreating(modelBuilder);
+
+        }
+
         protected DbSet<User> User { get; set; }
 
         protected DbSet<Patient> Patient { get; set; }
@@ -39,7 +48,6 @@ namespace AppointmentsScheduler.DAL
         protected DbSet<Appointment> Appointment { get; set; }
 
         protected DbSet<Country> Country { get; set; }
-
 
     }
 }
