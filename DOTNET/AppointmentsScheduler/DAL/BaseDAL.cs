@@ -41,9 +41,17 @@ namespace AppointmentsScheduler.DAL
         /// <returns><typeparamref name="T"/> object</returns>
         public void Update(T obj)
         {
-            base.Entry(typeof(T)).State = EntityState.Modified;
+            try
+            {
+                base.Entry(typeof(T)).State = EntityState.Modified;
+                SaveChanges();
+            }
+            catch (Exception)
+            {
+                Entry(obj).State = EntityState.Unchanged;
+                throw;
+            }
 
-            SaveChanges();
         }
 
         /// <summary>
@@ -74,8 +82,17 @@ namespace AppointmentsScheduler.DAL
         /// <returns></returns>
         public async Task Delete(T obj)
         {
-            Set<T>().Remove(obj);
-            await SaveChangesAsync();
+            try
+            {
+                Set<T>().Remove(obj);
+                await SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                Entry(obj).State = EntityState.Unchanged;
+                throw;
+            }
+
         }
 
         /// <summary>

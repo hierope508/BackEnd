@@ -29,6 +29,7 @@ namespace AppointmentsScheduler
         {
 
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppointmentsScheduler", Version = "v1" });
@@ -54,6 +55,7 @@ namespace AppointmentsScheduler
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
+                app.UseCors(option => option.AllowAnyOrigin());
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("./v1/swagger.json", "AppointmentsScheduler v1"));
             }
 
