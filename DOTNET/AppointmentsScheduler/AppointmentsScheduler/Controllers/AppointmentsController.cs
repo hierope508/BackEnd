@@ -42,10 +42,23 @@ namespace AppointmentsScheduler.Controllers
             return appointment;
         }
 
+        [HttpGet("GetAppointments")]
+        public ActionResult<IList<Appointment>> GetAppointments(DateTime date, string query)
+        {
+            var appointments = _context.GetAppointments(date, query);
+
+            if (appointments == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(appointments);
+        }
+
         // PUT: api/Appointments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAppointment(int id, Appointment appointment)
+        public IActionResult PutAppointment(int id, Appointment appointment)
         {
             if (id != appointment.Id)
             {

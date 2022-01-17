@@ -1,4 +1,5 @@
 ﻿using AppointmentsScheduler.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace AppointmentsScheduler.DAL
         public DALAppointment(string connectionString) : base(connectionString) 
         {
 
+        }
+
+        public IList<Appointment> Select(DateTime date, string user)
+        {
+            return Appointment.Where(a => a.ScheduleDate == date).Include(p => p.Patient).Where(u => u.Patient.FullName.Contains(user)).ToList();
         }
 
         public override bool Exists(int id)

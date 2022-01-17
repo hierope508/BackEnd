@@ -43,7 +43,7 @@ namespace AppointmentsScheduler.DAL
         {
             try
             {
-                base.Entry(typeof(T)).State = EntityState.Modified;
+                Set<T>().Update(obj);
                 SaveChanges();
             }
             catch (Exception)

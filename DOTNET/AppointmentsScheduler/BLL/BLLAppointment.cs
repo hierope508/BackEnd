@@ -10,11 +10,11 @@ namespace AppointmentsScheduler.BLL
 {
     public class BLLAppointment
     {
-        private readonly DALAppointment _dalAppointment;
+        private readonly string _connectionString;
 
         public BLLAppointment(string connectingString)
         {
-            _dalAppointment = new DALAppointment(connectingString);
+            _connectionString = connectingString;
         }
 
 
@@ -22,7 +22,8 @@ namespace AppointmentsScheduler.BLL
         {
             try
             {
-                return await _dalAppointment.SelectAll();
+                using DALAppointment dalAppointment = new DALAppointment(_connectionString);
+                return await dalAppointment.SelectAll();
             }
             catch (Exception ex)
             {
@@ -35,7 +36,8 @@ namespace AppointmentsScheduler.BLL
         {
             try
             {
-                return await _dalAppointment.Select(id);
+                using DALAppointment dalAppointment = new DALAppointment(_connectionString);
+                return await dalAppointment.Select(id);
             }
             catch (Exception ex)
             {
@@ -45,11 +47,27 @@ namespace AppointmentsScheduler.BLL
             
         }
 
+        public IList<Appointment> GetAppointments(DateTime date, string query)
+        {
+            try
+            {
+                using DALAppointment dalAppointment = new DALAppointment(_connectionString);
+                return dalAppointment.Select(date, query);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
         public void UpdateAppointment(Appointment appointment)
         {
             try
             {
-                _dalAppointment.Update(appointment);
+                using DALAppointment dalAppointment = new DALAppointment(_connectionString);
+                dalAppointment.Update(appointment);
             }
             catch (Exception ex)
             {
@@ -62,7 +80,8 @@ namespace AppointmentsScheduler.BLL
         {
             try
             {
-                return _dalAppointment.Exists(id);
+                using DALAppointment dalAppointment = new DALAppointment(_connectionString);
+                return dalAppointment.Exists(id);
             }
             catch (Exception ex)
             {
@@ -75,7 +94,8 @@ namespace AppointmentsScheduler.BLL
         {
             try
             {
-                await _dalAppointment.Delete(appointment);
+                using DALAppointment dalAppointment = new DALAppointment(_connectionString);
+                await dalAppointment.Delete(appointment);
             }
             catch (Exception ex)
             {
@@ -89,7 +109,8 @@ namespace AppointmentsScheduler.BLL
             try
             {
                 appointment.Id = 0;
-                return await _dalAppointment.Insert(appointment);
+                using DALAppointment dalAppointment = new DALAppointment(_connectionString);
+                return await dalAppointment.Insert(appointment);
             }
             catch (Exception ex)
             {

@@ -14,6 +14,7 @@ namespace AppointmentsScheduler.DAL
         {
 #if DEBUG
             this.Database.EnsureCreated();
+            this.Database.Migrate();
 #endif
         }
 
